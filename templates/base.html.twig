@@ -56,14 +56,25 @@
                 <div class="limit-box">
                   <nav class="main-menu ">
                     <ul class="menu-area-main">
-                  
-                    
-                      {{ include ('partials/_navigation.html.twig')}}
+                
+                      <ul class="menu-area-main">
+                        {{ include('partials/_navigation.html.twig') }}
 
-      
-                        <li > <a   href="#contact">login</a> </li>
-                      <li  > <a  class="last_manu" href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
-                      
+                        {% if app.user %}
+                          <li>
+                            <a href="{{ path('app_logout') }}">Logout ({{ app.user.email }})</a>
+                          </li>
+                        {% else %}
+                        <li>
+                          <a href="{{ path('app_login') }}">Login</a>
+                        </li>
+                        <li>
+                          <a href="{{ path('app_register') }}">Register</a>
+                        </li>
+                        {% endif %}
+                         <li  > <a  class="last_manu" href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
+                      </ul>
+        
                      </ul>
                    </nav>
                 

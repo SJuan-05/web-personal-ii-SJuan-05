@@ -25,71 +25,14 @@ class Contact
     #[ORM\Column(length: 255)]
     private ?string $subject = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'text')]
     private ?string $message = null;
 
-    public function getId(): ?int
+    #[ORM\Column(type: 'datetime')]
+    private ?\DateTimeInterface $createdAt = null;
+
+    public function __construct()
     {
-        return $this->id;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
-
-    public function setFirstName(string $firstName): static
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $lastName): static
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getSubject(): ?string
-    {
-        return $this->subject;
-    }
-
-    public function setSubject(string $subject): static
-    {
-        $this->subject = $subject;
-
-        return $this;
-    }
-
-    public function getMessage(): ?string
-    {
-        return $this->message;
-    }
-
-    public function setMessage(string $message): static
-    {
-        $this->message = $message;
-
-        return $this;
+        $this->createdAt = new \DateTime();
     }
 }
